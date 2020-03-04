@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<Html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type=text/css href="style.css">
+    </head>
+
+    <body>
+        <button id="grid-button">New Grid</button>
+        <div id="container">
+
+        </div>
+    </body>
+
+    <script>
+        const container = document.querySelector("#container");
+        
+        // default grid for when the page loads
+        for (let i = 1; i <= (16 * 16); ++i) {
+            const div = document.createElement("div");
+            div.className = "grid-square";
+            div.id = i;
+            container.appendChild(div);
+        };
+
+        let grid = document.querySelectorAll(".grid-square")
+        
+        // adding a class rather than styling elements so that
+        // it can be easily removed in the future
+        function changeColor() {
+            grid.forEach((div) => {
+                div.addEventListener("mouseover", () => {
+                    div.classList.add("newBackCol");
+                });
+            });
+        };
+
+        changeColor();
+
+        const button = document.querySelector("#grid-button")
+
+        button.onclick = function() {
+            function refresh() {
+                while (container.hasChildNodes()) {
+                container.removeChild(container.firstChild);
+                }
+                let newSize = prompt("How many sqaures do you want each side of the grid to have the grid to have?");
+                if (newSize > 0) {
+                    container.style.gridTemplateColumns = `repeat(${newSize}, 1fr)`;
+                    container.style.gridTemplateRows = `repeat(${newSize}, 1fr)`;
+                    for (let i = 1; i <= (newSize * newSize); ++i) {
+                        const div = document.createElement("div");
+                        div.className = "grid-square";
+                        div.id = i;
+                        container.appendChild(div);
+                    };
+                    grid = document.querySelectorAll(".grid-square")
+                    
+                }
+                else {
+                    alert("Something went wrong. Please try again");
+                    refresh();
+                };
+            };
+
+            refresh();
+            
+            changeColor();  
+        };
+        
+
+
+
+    </script>
+
+
+
+
+
+</Html>

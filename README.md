@@ -1,0 +1,1 @@
+Etch-A-Sketch project from The Odin Project to practice skills in manipulating the DOM using Javascript.

@@ -1,0 +1,15 @@
+#container {
+    display: grid;
+    width: 800px;
+    height: 800px;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+}
+
+.grid-square {
+    background-color: rgba(38, 209, 201, 0.781);
+}
+
+.newBackCol {
+    background-color: rgba(209, 78, 38, 0.781);
+}
